@@ -1,0 +1,27 @@
+# ===== Keil MDK-ARM 编译中间产物(不入库) =====
+MDK-ARM/Objects/
+MDK-ARM/Listings/
+MDK-ARM/MXtext/
+MDK-ARM/DebugConfig/
+*.o
+*.d
+*.crf
+*.dep
+*.lst
+*.axf
+*.htm
+*.map
+*.lnp
+*.bak
+*.tmp
+
+# ===== Keil 个人界面/调试设置(不入库) =====
+*.uvguix.*
+*.uvoptx
+
+# ===== IDE / 系统临时文件 =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
