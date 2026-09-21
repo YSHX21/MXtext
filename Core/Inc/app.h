@@ -103,7 +103,7 @@ static uint8_t  run_target = 0;   /*本次运行目标层*/
 #define MODE_LOCAL_SIM   1
 #define MODE_DUAL_NODE   2
 #ifndef WORK_MODE
-#define WORK_MODE       MODE_LOCAL_SIM
+#define WORK_MODE       MODE_DUAL_NODE   /*真双节点：A只管调度，升降由驱动板B执行*/
 #endif
 
 /*下面三个由 WORK_MODE 自动推导，不要手改*/

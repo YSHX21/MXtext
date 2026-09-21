@@ -19,6 +19,14 @@ MDK-ARM/DebugConfig/
 *.uvguix.*
 *.uvoptx
 
+# ===== 节点B(驱动板)编译产物 =====
+NodeB/MDK-ARM/fastdianji/
+NodeB/MDK-ARM/Objects/
+NodeB/MDK-ARM/Listings/
+NodeB/MDK-ARM/DebugConfig/
+NodeB/keil-assistant.log
+NodeB/uv4.log.lock
+
 # ===== IDE / 系统临时文件 =====
 .vscode/
 .idea/

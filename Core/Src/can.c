@@ -38,17 +38,17 @@ void MX_CAN_Init(void)
 
   /* USER CODE END CAN_Init 1 */
   hcan.Instance = CAN1;
-  hcan.Init.Prescaler = 36;             /*PCLK1=36MHz /36 = 1MHz → 1TQ = 1us*/
+  /* 与江科大(已验证能通)完全一致的位时序：
+     PCLK1=36MHz /48 = 750kHz；1TQ=1.333us；(1+2+3)TQ=8us → 125kbps */
+  hcan.Init.Prescaler = 48;
   hcan.Init.Mode = CAN_MODE_NORMAL;     /*注：app.c 的 CAN_Init() 里按宏可能改成回环模式*/
-  hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan.Init.TimeSeg1 = CAN_BS1_5TQ;     /*采样点 = (1+5)/(1+5+2) = 75%*/
-  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;     /*波特率 = 1MHz / 8TQ = 125kbps
-                                           原配置 BS1=2/BS2=3 采样点只有50%，长线或
-                                           电机干扰环境下容易出错，已修正*/
+  hcan.Init.SyncJumpWidth = CAN_SJW_2TQ;
+  hcan.Init.TimeSeg1 = CAN_BS1_2TQ;
+  hcan.Init.TimeSeg2 = CAN_BS2_3TQ;
   hcan.Init.TimeTriggeredMode = DISABLE;
-  hcan.Init.AutoBusOff = DISABLE;
+  hcan.Init.AutoBusOff = DISABLE;       /*与江科大/CubeMX默认一致*/
   hcan.Init.AutoWakeUp = DISABLE;
-  hcan.Init.AutoRetransmission = DISABLE;
+  hcan.Init.AutoRetransmission = ENABLE;
   hcan.Init.ReceiveFifoLocked = DISABLE;
   hcan.Init.TransmitFifoPriority = DISABLE;
   if (HAL_CAN_Init(&hcan) != HAL_OK)
